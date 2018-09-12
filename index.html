@@ -149,14 +149,13 @@ function change_temp(temp) {
     let matrix = [ 3.2404542, -1.5371385, -0.4985314,
                     -0.9692660,  1.8760108,  0.0415560,
                     0.0556434, -0.2040259,  1.0572252 ];
-    let R = gamma ((col.X*matrix[0] + col.Y*matrix[1] + col.Z*matrix[2]));
-    let G = gamma ((col.X*matrix[3] + col.Y*matrix[4] + col.Z*matrix[5]));
-    let B = gamma ((col.X*matrix[6] + col.Y*matrix[7] + col.Z*matrix[8]));
+    let R = col.X*matrix[0] + col.Y*matrix[1] + col.Z*matrix[2];
+    let G = col.X*matrix[3] + col.Y*matrix[4] + col.Z*matrix[5];
+    let B = col.X*matrix[6] + col.Y*matrix[7] + col.Z*matrix[8];
     let max = Math.max(R, Math.max(G, B));
-    console.log(max);
-    R = R/max * 255;
-    G = G/max * 255;
-    B = B/max * 255;
+    R = gamma(R/max) * 255;
+    G = gamma(G/max) * 255;
+    B = gamma(B/max) * 255;
     let style = "rgb("+parseInt(R).toString()+","+parseInt(G).toString()+","+parseInt(B).toString()+")";
     console.log("Temp: " + temp.toString() + " RGB: " + style);
     document.getElementById("Body").style = "background-color: " + style + ";";
