@@ -156,10 +156,10 @@ function change_temp(temp) {
     R = gamma(R/max) * 255;
     G = gamma(G/max) * 255;
     B = gamma(B/max) * 255;
-    let style = "rgb("+parseInt(R).toString()+","+parseInt(G).toString()+","+parseInt(B).toString()+")";
+    let style = "rgb("+parseInt(R+0.5).toString()+","+parseInt(G+0.5).toString()+","+parseInt(B+0.5).toString()+")";
     console.log("Temp: " + temp.toString() + " RGB: " + style);
     document.getElementById("Body").style = "background-color: " + style + ";";
-    document.getElementById("TempLabel").innerHTML = temp.toString()+" Kelvin<br /><br />sRGB: "+parseInt(R).toString()+","+parseInt(G).toString()+","+parseInt(B).toString()+"<br /><br />XYZ: "+col.X.toPrecision(3).toString()+", "+col.Y.toPrecision(3).toString()+", "+col.Z.toPrecision(3).toString();
+    document.getElementById("TempLabel").innerHTML = temp.toString()+" Kelvin<br /><br />sRGB: "+parseInt(R+0.5).toString()+","+parseInt(G+0.5).toString()+","+parseInt(B+0.5).toString()+"<br /><br />XYZ: "+col.X.toPrecision(3).toString()+", "+col.Y.toPrecision(3).toString()+", "+col.Z.toPrecision(3).toString();
     if (R > 0) { if (G > 0) { if (B > 0) {return;} } }
     document.getElementById("TempLabel").innerHTML = document.getElementById("TempLabel").innerHTML.replace("n", "n (PREVIEW CLIPPED NOT ACCURATE)");
 }
